@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" rel="text/javascript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="Timer.js" rel="text/javascript"></script>
+
+</head>
+
+<body onload="startTime()">
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBHyE7ubtmkvzort5bLh80eb8D1SiTPXjc",
+            authDomain: "hackaz2018-260c8.firebaseapp.com",
+            databaseURL: "https://hackaz2018-260c8.firebaseio.com",
+            projectId: "hackaz2018-260c8",
+            storageBucket: "hackaz2018-260c8.appspot.com",
+            messagingSenderId: "676506445629"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <div class="jumbotron">
+        <div class="container">
+            <h1> Daily Quote</h1>
+            <p>Your daily dose of Happiness, Inspiration, and Peace</p>
+            <br>
+            <div class="quote_div">
+		    <p id="quote"><i>
+		    <script type="text/javascript"> 
+			var db = firebase.database().ref();
+			var quote_str = db.child('quoteStorage').child('quote1');
+			quote_str.on('value', function(snapshot){
+				document.getElementById("quote").innerText = snapshot.val();
+			});
+		    </script>
+		    </i>
+	   	    </p>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment" placeholder="Want to share a moment in your mind?"></textarea>
+                <br>
+                <a type="button" value=" Send" class="btn btn-success btn-lg" type="submit" id="submit" onclick="submitClick()"> Share a Quote </a>
+                <br>
+            </div>
+            <br>
+            <br>
+            <div class="display-group">
+                <label for="display-comment">Most Recent Quotes</label>
+                <label for="display-clock" id="Clock-Now">aaa</label>
+                <textarea class="form-control" rows="5" id="displayComment">
+
+                   </textarea>
+                <!-- <ul id="quoteList">
+
+                   </ul> -->
+                <br>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
+    <script src="js/bootstrap.min.js"> </script>
+    <br>
+
+
+    <form action="/action_page.php">
+        <br>
+    </form>
+
+
+
+    <script src="happyWeb.js" rel="text/javascript"></script>
+
+</body>
+
+
+
+</html>
